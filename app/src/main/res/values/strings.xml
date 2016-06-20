@@ -1,3 +1,35 @@
 <resources>
-    <string name="app_name">weddinglatte</string>
+    <string name="app_name">웨딩라떼</string>
+    <string name="hello_blank_fragment">미유미유2</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
+    <string name="business_type">업체종류</string>
+    <string name="area_type">지역선택</string>
+    <string name="home_menu_name">홈</string>
+    <string name="community_menu_name">커뮤니티</string>
+    <string name="business_info_menu_name">업체정보</string>
+    <string name="mypage_menu_name">마이페이지</string>
+    <string name="logout_menu_name">로그아웃</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="business_info">
+        "업체소개\n\n"
+        "좋은 업체"
+        "가격싸고 서비스 좋아요"
+        "빨리 예약하세요"
+        "한번뿐인 결혼  이곳에서 하세요"
+        "알겠죠 손님\n\n"
+    </string>
+    <string name="business_summary_info">
+        "\n\n"
+        "주소 : 경기도 안양시 안양동 100단지 1호\n"
+        "연락처 : 010 - 1234 - 1234\n"
+        "영업시간  : 오전 10시 ~ 오후 12시\n"
+        "휴무일 : 주말\n"
+        "기타 : 주차 가능\n "
+        "\n\n"
+    </string>
+
 </resources>
