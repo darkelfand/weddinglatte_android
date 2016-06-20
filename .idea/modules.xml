@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/ViewPagerIndicator/ViewPagerIndicator.iml" filepath="$PROJECT_DIR$/ViewPagerIndicator/ViewPagerIndicator.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/weddinglatte.iml" filepath="$PROJECT_DIR$/weddinglatte.iml" />
+      <module fileurl="file://$PROJECT_DIR$/weddinglatte_android.iml" filepath="$PROJECT_DIR$/weddinglatte_android.iml" />
     </modules>
   </component>
 </project>
