@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="org.redborn.weddinglatte.android.view.BusinessDetailActivity"
+    android:id="@+id/aaa">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="fill_parent"
+            android:layout_height="180dp"
+            android:layout_above="@+id/bottom"
+            android:layout_below="@+id/ll_title_layout">
+            <com.viewpagerindicator.TitlePageIndicator
+                android:id="@+id/titles"
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent" />
+        </android.support.v4.view.ViewPager>
+
+        <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="주소 : 안양 비산 라프로메사"
+        />
+
+        <!-- 약도 -->
+        <fragment
+            android:id="@+id/detail_map"
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            class="com.google.android.gms.maps.SupportMapFragment" />
+
+        <!-- 업체 소개 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/business_info"
+        />
+
+        <!-- 별점 -->
+        <TextView
+            android:id="@+id/star_score"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="별점"
+            />
+        <RatingBar
+            android:id="@+id/ratingBar1"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:numStars="5"
+            />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="80dp" />
+        <!-- 댓글 -->
+        <fragment
+            android:name="org.redborn.weddinglatte.android.view.main.CommentFragment"
+            android:id="@+id/comment_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="80dp" />
+    </LinearLayout>
+</ScrollView>
+
+    <SlidingDrawer
+        android:id="@+id/slide"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:allowSingleTap="true"
+        android:animateOnClick="true"
+        android:bottomOffset="5dp"
+        android:content="@+id/content"
+        android:handle="@+id/handle"
+        android:orientation="vertical"
+        android:topOffset="280dp">
+        <Button
+            android:id="@+id/handle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:text="요약정보" />
+        <LinearLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FFFFFFFF"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="20dp"
+                android:text="@string/business_summary_info"
+                />
+        </LinearLayout>
+    </SlidingDrawer>
+  </android.support.design.widget.CoordinatorLayout>
