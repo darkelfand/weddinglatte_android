@@ -1,81 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="org.redborn.weddinglatte.android.view.BusinessDetailActivity"
-    android:id="@+id/aaa">
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    tools:context="org.redborn.weddinglatte.android.view.BusinessDetailActivity">
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/viewpager"
-            android:layout_width="fill_parent"
-            android:layout_height="180dp"
-            android:layout_above="@+id/bottom"
-            android:layout_below="@+id/ll_title_layout">
-            <com.viewpagerindicator.TitlePageIndicator
-                android:id="@+id/titles"
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:background="#e2664a"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/toolbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            app:contentScrim="#4a90e2"
+            app:statusBarScrim="#4a90e2"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_width="fill_parent" />
-        </android.support.v4.view.ViewPager>
+                android:orientation="vertical"
 
-        <TextView
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:text="주소 : 안양 비산 라프로메사"
-        />
+                android:layout_gravity="center|top"
 
-        <!-- 약도 -->
-        <fragment
-            android:id="@+id/detail_map"
-            android:layout_width="match_parent"
-            android:layout_height="230dp"
-            class="com.google.android.gms.maps.SupportMapFragment" />
+                android:gravity="center">
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/viewpager"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_above="@+id/bottom"
+                    android:layout_below="@+id/ll_title_layout"
+                    >
+                    <com.viewpagerindicator.TitlePageIndicator
+                        android:id="@+id/titles"
+                        android:layout_height="wrap_content"
+                        android:layout_width="fill_parent" />
+                </android.support.v4.view.ViewPager>
+                <!--<TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="HI!"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:textSize="30dp"/>
 
-        <!-- 업체 소개 -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/business_info"
-        />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="I am Amornchai, Mobile Application Developer living in Tokyo, Japan "/>-->
 
-        <!-- 별점 -->
-        <TextView
-            android:id="@+id/star_score"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:text="별점"
-            />
-        <RatingBar
-            android:id="@+id/ratingBar1"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:numStars="5"
-            />
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="80dp" />
-        <!-- 댓글 -->
-        <fragment
-            android:name="org.redborn.weddinglatte.android.view.main.CommentFragment"
-            android:id="@+id/comment_list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="80dp" />
-    </LinearLayout>
-</ScrollView>
+            </LinearLayout>
 
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar2"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/AppTheme.PopupOverlay"/>
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/content_main"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="?attr/actionBarSize"
+        android:text="@string/app_name"
+        android:textSize="18dp"
+        android:elevation="10dp"
+        android:layout_marginLeft="270dp"
+        android:layout_marginTop="-10dp"
+        android:gravity="center_vertical"
+        android:textColor="@android:color/white"
+        android:alpha="0"
+        app:layout_behavior="com.zoonref.SimpleViewBehavior"
+        app:dependsOn="@+id/app_bar"
+        app:dependType="y"
+        app:dependTargetY="-206dp"
+        app:targetY="0dp"
+        app:targetAlpha="1"/>
     <SlidingDrawer
         android:id="@+id/slide"
         android:layout_width="match_parent"
@@ -108,4 +123,4 @@
                 />
         </LinearLayout>
     </SlidingDrawer>
-  </android.support.design.widget.CoordinatorLayout>
+</android.support.design.widget.CoordinatorLayout>

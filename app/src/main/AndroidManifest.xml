@@ -3,7 +3,7 @@
     package="org.redborn.weddinglatte">
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <application
-        android:allowBackup="false"
+        android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
@@ -24,7 +24,8 @@
         <activity
             android:name=".android.view.WriteBoardActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".android.view.BusinessDetailActivity" />
+        <activity android:name=".android.view.BusinessDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <uses-feature android:glEsVersion="0x00020000" android:required="true" />
         <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
         <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />

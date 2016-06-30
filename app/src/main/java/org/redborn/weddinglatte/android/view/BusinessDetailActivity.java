@@ -1,14 +1,15 @@
 package org.redborn.weddinglatte.android.view;
 
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
-
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -35,10 +36,15 @@ public class BusinessDetailActivity extends AppCompatActivity{
     RatingBar rating;
     TextView tv01;
     Button btnClose;
+    private final int CONTENTS_VIEW_POSITION = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_business_detail);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar2);
+        toolbar.setTitle("라프로메사 웨딩홀");
+        setSupportActionBar(toolbar);
 
         //미리보기 생성
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
@@ -66,7 +72,6 @@ public class BusinessDetailActivity extends AppCompatActivity{
         CommentFragment fragment = new CommentFragment();
         fragmentTransaction.add(R.id.comment_list, fragment );
         fragmentTransaction.commit();
-
     }
 
     // 마커 추가하기
