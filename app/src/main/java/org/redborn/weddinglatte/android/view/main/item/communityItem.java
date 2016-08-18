@@ -8,5 +8,4 @@ public class CommunityItem {
         icon = setIcon;
         content = setContent;
     }
-
 }
