@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+    android:id="@+id/ns"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="org.redborn.weddinglatte.android.view.BusinessDetailActivity">
+    tools:showIn="@layout/activity_business_detail">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <!-- 약도 -->
+        <fragment
+            android:id="@+id/detail_map"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            class="com.google.android.gms.maps.SupportMapFragment"
+            />
+
+        <!-- 업체 소개 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="라프로메사 웨딩홀\n
+            여기서 결혼한다면 당신은\n
+            무얼까요?\n" />
+
+        <!-- 별점 -->
+        <TextView
+            android:id="@+id/star_score"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="별점"
+
+            />
+        <RatingBar
+            android:id="@+id/ratingBar1"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            app:layout_collapseMode="pin"
+            android:numStars="5"
+            />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="80dp" />
+        <!-- 댓글 -->
+        <fragment
+            android:name="org.redborn.weddinglatte.android.view.main.CommentFragment"
+            android:id="@+id/comment_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:rotationX="90"
+            android:elevation="10dp"
+            android:background="@android:color/holo_blue_bright"
+            android:alpha="0"
+            />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="80dp" />
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>
