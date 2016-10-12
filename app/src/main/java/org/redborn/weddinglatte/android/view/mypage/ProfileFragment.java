@@ -1,15 +1,21 @@
 package org.redborn.weddinglatte.android.view.mypage;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import org.redborn.weddinglatte.R;
+import org.redborn.weddinglatte.android.view.MainActivity;
+import org.redborn.weddinglatte.android.view.SearchMapActivity;
 
 
 public class ProfileFragment extends Fragment {
@@ -50,7 +56,7 @@ public class ProfileFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_profile_fragmentr, container, false);
         ImageView imgview = (ImageView)view.findViewById(R.id.imageView2);
         //TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-
+        //마이페이지 사진 업로드
         imgview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,6 +68,28 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        Button btn = (Button) view.findViewById(R.id.button2);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //버튼 클릭시 처리로직
+                // 다이얼로그 바디
+                AlertDialog.Builder alert_confirm = new AlertDialog.Builder(getActivity());
+
+                alert_confirm.setView(R.layout.password_dialog);
+
+                // 확인 버튼 리스너
+                alert_confirm.setPositiveButton("확인", null);
+                alert_confirm.setNegativeButton("취소", null);
+                // 다이얼로그 생성
+                AlertDialog alert = alert_confirm.create();
+
+                // 다이얼로그 타이틀
+                alert.setTitle("비밀번호 변경");
+                // 다이얼로그 보기
+                alert.show();
+            }
+        });
 
         return view;
     }
