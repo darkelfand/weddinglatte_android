@@ -7,12 +7,20 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.androidquery.AQuery;
 import com.androidquery.callback.AjaxCallback;
@@ -28,15 +36,21 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.redborn.weddinglatte.R;
+import org.redborn.weddinglatte.android.view.main.BusinessInfoDetailFragment;
+import org.redborn.weddinglatte.android.view.main.CommentFragment;
+import org.redborn.weddinglatte.android.view.main.SearchMapFragment;
 import org.redborn.weddinglatte.android.vo.PlaceVO;
 
 import java.util.ArrayList;
+
+import static org.redborn.weddinglatte.R.id.container;
 
 public class SearchMapActivity extends AppCompatActivity {
 
@@ -64,6 +78,10 @@ public class SearchMapActivity extends AppCompatActivity {
 
             AlertDialog.Builder builder = new AlertDialog.Builder(SearchMapActivity.this);
 
+            /*Spinner spinner = (Spinner)findViewById(R.id.spinner);
+            ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.area_select, android.R.layout.simple_spinner_item);
+            spinner.setAdapter(adapter);
+            */
             builder.setTitle(R.string.area_type)
                     .setPositiveButton("선택완료",
                             new DialogInterface.OnClickListener() {
@@ -73,6 +91,7 @@ public class SearchMapActivity extends AppCompatActivity {
                                 }
                             })
                     .setNegativeButton("취소", null);
+        builder.setView(R.layout.area_select_dialog);
             builder.show();
         return super.onOptionsItemSelected(item);
     }
@@ -80,6 +99,8 @@ public class SearchMapActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_map);
+
+        findViewById(R.id.slide).setVisibility(View.GONE);
 
         mPlaceList.clear();
         displayMap();
@@ -178,9 +199,36 @@ public class SearchMapActivity extends AppCompatActivity {
             opt.title(place.name); // 제목 미리보기
             opt.snippet(place.vicinity);
             mGoogleMap.addMarker(opt);
-            //심화과제 1: 팻말을 클릭하면 place API중 detail 정보를 가져오는 API를호출하고,
-            //info window에 홈페이지, 이미지, 전화번호, 등등을 표시
-            //심화과제 2: 길찾기 서비스
+            // 마커클릭 이벤트 처리
+            // GoogleMap 에 마커클릭 이벤트 설정 가능.
+            mGoogleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+                @Override
+                public boolean onMarkerClick(Marker marker) {
+                    // 마커 클릭시 호출되는 콜백 메서드
+                    Toast.makeText(getApplicationContext(),
+                            marker.getTitle() + " 클릭했음"
+                            , Toast.LENGTH_SHORT).show();
+                    TextView textView = (TextView)findViewById(R.id.handle);
+                    textView.setText(marker.getTitle());
+                    findViewById(R.id.slide).setVisibility(View.VISIBLE);
+                    /*<Button
+                    android:id="@+id/handle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorAccent"
+                    android:text="요약정보" />*/
+                    findViewById(R.id.handle).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Toast.makeText(getApplicationContext(),
+                                    "바로가기 클릭했음"
+                                    , Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    return true;
+                }
+            });
+
         }
     }
 
