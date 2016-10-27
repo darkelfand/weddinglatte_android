@@ -11,8 +11,8 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="179dp"
-        android:layout_weight="0.58"
+        android:layout_height="389dp"
+        android:layout_weight="0.47"
         android:weightSum="1">
 
         <EditText
